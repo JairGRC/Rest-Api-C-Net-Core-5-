@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Catalog.Entities;
+using Catalog.Interfaces;
 
 namespace Catalog.Repositories
 {
-    public class InMemItemsRepository
+    public class InMemItemsRepository : IInMemItemsRepository
     {
         private readonly List<Item> items = new()
         {
@@ -20,6 +21,11 @@ namespace Catalog.Repositories
         public Item GetItem(Guid id)
         {
             return items.Where(items => items.Id == id).SingleOrDefault();
+        }
+
+        public void CreateItem(Item item)
+        {
+            items.Add(item);
         }
     }
 }
