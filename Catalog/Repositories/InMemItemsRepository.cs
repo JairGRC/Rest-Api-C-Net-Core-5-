@@ -24,7 +24,6 @@ namespace Catalog.Repositories
             var item= items.Where(items => items.Id == id).SingleOrDefault();
             return await Task.FromResult(item);
         }
-
         public async Task CreateItemAsync(Item item)
         {
             items.Add(item);
